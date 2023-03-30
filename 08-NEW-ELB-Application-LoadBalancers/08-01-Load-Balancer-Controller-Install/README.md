@@ -32,9 +32,9 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 ```t
 # Create Cluster (Section-01-02)
 eksctl create cluster --name=eksdemo1 \
-                      --region=us-east-1 \
-                      --zones=us-east-1a,us-east-1b \
-                      --version="1.21" \
+                      --region=us-east-2 \
+                      --zones=us-east-2a,us-east-2b \
+                      --version="1.22" \
                       --without-nodegroup 
 
 
