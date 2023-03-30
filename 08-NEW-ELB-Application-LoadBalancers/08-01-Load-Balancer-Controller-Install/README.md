@@ -324,7 +324,7 @@ Kalyans-MacBook-Pro:08-01-Load-Balancer-Controller-Install kdaida$ helm install 
 >   --set serviceAccount.name=aws-load-balancer-controller \
 >   --set region=us-east-2 \
 >   --set vpcId=vpc-0570fda59c5aaf192 \
->   --set image.repository=385685296160.dkr.ecr.us-east-1.amazonaws.com/amazon/aws-load-balancer-controller
+>   --set image.repository=602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-load-balancer-controller
 NAME: aws-load-balancer-controller
 LAST DEPLOYED: Wed Feb  2 10:33:57 2022
 NAMESPACE: kube-system
