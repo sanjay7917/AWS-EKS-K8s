@@ -34,7 +34,7 @@ https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 eksctl create cluster --name=eksdemo1 \
                       --region=us-east-2 \
                       --zones=us-east-2a,us-east-2b \
-                      --version="1.22" \
+                      --version="1.24" \
                       --without-nodegroup 
 
 
@@ -49,13 +49,13 @@ eksctl utils associate-iam-oidc-provider \
 
 # Replace with region & cluster name (Section-01-02)
 eksctl utils associate-iam-oidc-provider \
-    --region us-east-1 \
+    --region us-east-2 \
     --cluster eksdemo1 \
     --approve
 
 # Create EKS NodeGroup in VPC Private Subnets (Section-07-01)
 eksctl create nodegroup --cluster=eksdemo1 \
-                        --region=us-east-1 \
+                        --region=us-east-2 \
                         --name=eksdemo1-ng-private1 \
                         --node-type=t3.medium \
                         --nodes-min=2 \
@@ -89,7 +89,7 @@ Observation:
 # Configure kubeconfig for kubectl
 eksctl get cluster # TO GET CLUSTER NAME
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
-aws eks --region us-east-1 update-kubeconfig --name eksdemo1
+aws eks --region us-east-2 update-kubeconfig --name eksdemo1
 
 # Verify EKS Nodes in EKS Cluster using kubectl
 kubectl get nodes
@@ -185,7 +185,7 @@ eksctl create iamserviceaccount \
   --cluster=eksdemo1 \
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
-  --attach-policy-arn=arn:aws:iam::180789647333:policy/AWSLoadBalancerControllerIAMPolicy \
+  --attach-policy-arn=arn:aws:iam::385685296160:policy/AWSLoadBalancerControllerIAMPolicy \
   --override-existing-serviceaccounts \
   --approve
 ```
@@ -196,7 +196,7 @@ Kalyans-MacBook-Pro:08-01-Load-Balancer-Controller-Install kdaida$ eksctl create
 >   --cluster=eksdemo1 \
 >   --namespace=kube-system \
 >   --name=aws-load-balancer-controller \
->   --attach-policy-arn=arn:aws:iam::180789647333:policy/AWSLoadBalancerControllerIAMPolicy \
+>   --attach-policy-arn=arn:aws:iam::385685296160:policy/AWSLoadBalancerControllerIAMPolicy \
 >   --override-existing-serviceaccounts \
 >   --approve
 2022-02-02 10:22:49 [ℹ]  eksctl version 0.82.0
@@ -310,9 +310,9 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set clusterName=eksdemo1 \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller \
-  --set region=us-east-1 \
-  --set vpcId=vpc-0165a396e41e292a3 \
-  --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/amazon/aws-load-balancer-controller
+  --set region=us-east-2 \
+  --set vpcId=vpc-<VPC ID> \
+  --set image.repository=385685296160.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-load-balancer-controller
 ```
 - **Sample output for AWS Load Balancer Controller Install steps**
 ```t
@@ -322,9 +322,9 @@ Kalyans-MacBook-Pro:08-01-Load-Balancer-Controller-Install kdaida$ helm install 
 >   --set clusterName=eksdemo1 \
 >   --set serviceAccount.create=false \
 >   --set serviceAccount.name=aws-load-balancer-controller \
->   --set region=us-east-1 \
+>   --set region=us-east-2 \
 >   --set vpcId=vpc-0570fda59c5aaf192 \
->   --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/amazon/aws-load-balancer-controller
+>   --set image.repository=385685296160.dkr.ecr.us-east-1.amazonaws.com/amazon/aws-load-balancer-controller
 NAME: aws-load-balancer-controller
 LAST DEPLOYED: Wed Feb  2 10:33:57 2022
 NAMESPACE: kube-system
