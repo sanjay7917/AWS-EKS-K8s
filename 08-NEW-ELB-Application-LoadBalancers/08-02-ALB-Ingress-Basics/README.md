@@ -10,7 +10,7 @@ description: Learn AWS Load Balancer Controller - Ingress Basics
   - [ingressClassName](https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/guide/ingress/ingress_class/)
   - defaultBackend
   - rules
-  ( Ingress is used for cost optimization By sending request to different Paths("/app1", "/app2", etc). Insted of using multiple Load Balancer).
+  - ( Ingress is used for cost optimization By sending request to different Paths("/app1", "/app2", etc). Insted of using multiple Load Balancer).
 ## Step-02: Review App1 Deployment kube-manifest
 - **File Location:** `01-kube-manifests-default-backend/01-Nginx-App1-Deployment-and-NodePortService.yml`
 ```yaml
